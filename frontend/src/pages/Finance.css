@@ -1,0 +1,65 @@
+.finance {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.finance h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  color: var(--gray-600);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.tabs button:hover {
+  color: var(--primary);
+}
+
+.tabs button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.tab-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tab-content h3 {
+  margin-bottom: 20px;
+  color: var(--gray-600);
+}
+
+.tab-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tab-content th,
+.tab-content td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-content th {
+  background: var(--gray-100);
+  font-weight: 600;
+  color: var(--gray-600);
+}

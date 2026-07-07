@@ -1,0 +1,31 @@
+{
+  "name": "les-mates-platform",
+  "version": "1.0.0",
+  "description": "Financial management platform with RBAC and multi-tenant support",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker-compose up",
+    "dev:detach": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "build": "docker-compose build",
+    "rebuild": "docker-compose up --build",
+    "logs": "docker-compose logs -f",
+    "logs:auth": "docker-compose logs -f auth-service",
+    "logs:rbac": "docker-compose logs -f rbac-service",
+    "logs:org": "docker-compose logs -f org-service",
+    "logs:finance": "docker-compose logs -f finance-service",
+    "logs:frontend": "docker-compose logs -f frontend",
+    "migrate": "docker-compose exec postgres psql -U postgres -d les_mates -f /docker-entrypoint-initdb.d/01-init.sql",
+    "seed": "npm run seed:auth && npm run seed:rbac && npm run seed:finance",
+    "seed:auth": "docker-compose exec auth-service npm run seed",
+    "seed:rbac": "docker-compose exec rbac-service npm run seed",
+    "seed:finance": "docker-compose exec finance-service npm run seed",
+    "ps": "docker-compose ps",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["finance", "rbac", "multi-tenant"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
