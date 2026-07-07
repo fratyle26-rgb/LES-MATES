@@ -25,7 +25,7 @@ npm run seed
 ## Services
 
 | Service | Port | Tech Stack |
-|---------|------|-----------|
+|---------|------|------------|
 | PostgreSQL | 5432 | Database |
 | Redis | 6379 | Cache |
 | Auth API | 3001 | Node.js/Express |
@@ -33,4 +33,3 @@ npm run seed
 | Org API | 3003 | Node.js/Express |
 | Finance API | 3004 | Node.js/Express |
 | Frontend | 3000 | React/Vite |
-
