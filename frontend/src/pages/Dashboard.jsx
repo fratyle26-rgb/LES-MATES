@@ -18,15 +18,13 @@ function Dashboard({ user, token }) {
     try {
       setLoading(true)
       // Get user organization (assume first organization)
-      const orgResult = await axios.get('http://localhost:3003/organizations/1', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const orgId = 1 // demo default org; real UX will select via membership picker
 
-      const orgId = orgResult.data.id
-
-      // Load accounts
-      const accountsRes = await axios.get(`http://localhost:3004/accounts/${orgId}`, {
-        headers: { Authorization: `Bearer ${token}` }
+      const accountsRes = await axios.get(`http://localhost:3004/accounts`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'X-Organization-Id': String(orgId),
+        },
       })
 
       setStats({

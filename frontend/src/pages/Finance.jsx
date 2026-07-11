@@ -16,12 +16,15 @@ function Finance({ user, token }) {
     else if (tab === 'ledger') loadTrialBalance()
   }, [tab])
 
+  const authHeaders = {
+    Authorization: `Bearer ${token}`,
+    'X-Organization-Id': String(orgId),
+  }
+
   const loadAccounts = async () => {
     try {
       setLoading(true)
-      const res = await axios.get(`http://localhost:3004/accounts/${orgId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const res = await axios.get(`http://localhost:3004/accounts`, { headers: authHeaders })
       setAccounts(res.data.accounts)
     } catch (error) {
       console.error('Load accounts error:', error)
@@ -45,9 +48,7 @@ function Finance({ user, token }) {
   const loadTrialBalance = async () => {
     try {
       setLoading(true)
-      const res = await axios.get(`http://localhost:3004/trial-balance/${orgId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const res = await axios.get(`http://localhost:3004/trial-balance`, { headers: authHeaders })
       setTrialBalance(res.data)
     } catch (error) {
       console.error('Load trial balance error:', error)
@@ -120,8 +121,8 @@ function Finance({ user, token }) {
                       <tr key={i}>
                         <td>{acc.account_name}</td>
                         <td>{acc.account_type}</td>
-                        <td>{acc.account_type === 'ASSET' || acc.account_type === 'EXPENSE' ? acc.balance : '0.00'}</td>
-                        <td>{acc.account_type === 'LIABILITY' || acc.account_type === 'EQUITY' || acc.account_type === 'REVENUE' ? acc.balance : '0.00'}</td>
+                        <td>{acc.debit}</td>
+                        <td>{acc.credit}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -15,6 +15,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql
       - ./db/migrations/002_posted_immutability.sql:/docker-entrypoint-initdb.d/02-posted-immutability.sql
+      - ./db/migrations/003_pack2_finance_foundation.sql:/docker-entrypoint-initdb.d/03-pack2-finance-foundation.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
       interval: 5s
